@@ -197,6 +197,12 @@ public class Game extends Util {
     	System.out.println("Enquanto Thranduil ordena o ataque mágico contra os orcs, do alto das muralhas de Erebor, os anões também percebem a aproximação da horda inimiga. O chão treme com o peso das criaturas, e o céu se cobre de fumaça e gritos. Thorin Escudo de Carvalho, cercado por seus guerreiros, sabe que não há mais tempo para rivalidades. A sobrevivência de seu povo depende da ativação das torres de fogo, criadas pelos antigos mestres da engenharia anã. Para isso, é necessário decifrar o código binário gravado nas placas de comando. Você tem 3 tentativas para converter corretamente o número e liberar uma chuva de chamas sobre os orcs que se aproximam.");
     	boolean dwarfResult = this.convertEvent(input, "binary", 50, "Conversão correta! Você ativou as torres de fogo contra os orcs de Gundabad!", "Você falhou em decifrar o código binário. Os orcs avançam impiedosamente.");
     	if (!dwarfResult) return false;
+    	
+    	System.out.println("Enquanto os exércitos élficos e anões lutam bravamente contra a horda de orcs, uma energia ancestral começa a pulsar sob a terra. Ambos os reis — Thranduil e Thorin — percebem que a batalha está prestes a tomar proporções além da força de seus soldados. Em um antigo santuário escondido entre as ruínas, repousa um dos Anéis de Poder, forjado para proteger os povos livres da Terra Média. Mas seu poder está selado por um código mágico em sistema hexadecimal. Um guerreiro de confiança é escolhido para ativar o anel. Você tem 3 tentativas para converter corretamente o número e liberar sua energia contra os orcs, antes que a escuridão consuma o campo de batalha.");
+    	boolean ringResult = this.convertEvent(input, "hexadecimal", 50, "Conversão correta! Você ativou o Anel de Poder e virou o rumo da batalha contra os orcs de Gundabad!", "Você falhou em decifrar o código hexadecimal. A batalha está perdida.");
+    	if (!ringResult) return false;
+    	
+    	
 		return true;
     }
 }
