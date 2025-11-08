@@ -4,6 +4,7 @@
  */
 package sistemadosaneis;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
  *
  * @author antonio.acoliveira
  */
-public class Game {
+public class Game extends Util {
     public void showMenu(String gameName) {
     	this.showIntro();
 
@@ -25,11 +26,16 @@ public class Game {
             System.out.println("4 - Sair");
             
             System.out.print("\nEscolha uma opção: ");
-            option = input.nextInt();
+            try {            	
+            	option = input.nextInt();
+            } catch (InputMismatchException e) {
+				input.next();
+				option = 0;
+			}
             
             switch (option) {
                 case 1:
-                    this.showInstructions();;
+                    this.showInstructions();
                     break;
                 case 2:
                     System.out.println("Jogar...");
@@ -40,6 +46,15 @@ public class Game {
                         option = 4;
                         break;
                     }
+                    System.out.println("\nParabéns! Você passou do tutorial!.");
+                    
+                    boolean firstAct = firstAct(input);
+                    if (!firstAct) {
+						System.out.println("GAME OVER");
+						option = 4;
+						break;
+					} 
+                    
                     break;
                 case 3:
                     this.showCredits();
@@ -134,40 +149,28 @@ public class Game {
         String race = "";
         String typeNum = "";
         int choice;
+        boolean wayResult = false;
         do {
-            choice = input.nextInt();
+        	try {        		
+        		choice = input.nextInt();
+        	} catch (InputMismatchException e) {
+				input.next();
+				choice = 0;
+        	}
             
             switch(choice) {
                 case 1: 
-                    race = "dwarf";
-                    typeNum = "binary";
+                    wayResult = this.dwarfWay(input);	
                     break;
                 case 2: 
-                    race = "elf";
-                    typeNum = "octal";
+                    wayResult = this.elfWay(input);
                     break;
                 default: 
                     System.out.println("Opção inválida");
             }
         } while(choice != 1 && choice != 2);
-        return true;
-    }
-    
-    public String convertNumber(int num, String type) {
-        switch (type.toLowerCase()) {
-            case "binary":
-                return Integer.toBinaryString(num);
-            case "octal":
-                return Integer.toOctalString(num);
-            case "hex":
-                return Integer.toHexString(num);
-            default:
-                return "Formato inválido. Use: binario, octal ou hexadecimal.";
-        }
-    }
-    
-    public int randomInt(int max) {
-        return (int) (Math.random() * max) + 1;
+        
+        return wayResult;
     }
     
     public boolean dwarfWay(Scanner input) {
@@ -175,19 +178,25 @@ public class Game {
         System.out.println("Sua mente é afiada como um machado, pronta para decifrar os segredos do sistema binário.");
         System.out.println("A batalha ruge nos campos diante de Erebor. Soldados elfos avançam com precisão e velocidade, cercando os guerreiros anões. Thorin Escudo de Carvalho, empunhando sua lâmina ancestral, avista um artefato de guerra escondido entre os escombros — uma arma secreta dos antigos reis anões. Para ativá-la e causar dano aos inimigos, ele precisa decifrar um código binário gravado em sua superfície. \nCom o combate se intensificando, Thorin tem apenas 3 tentativas para converter corretamente o código e liberar seu poder contra os elfos. (Dica: o número é entre 1 e 10)");
         
-        int randomInt = this.randomInt(10);
-        String binary = this.convertNumber(randomInt, "binary");
-        
-        System.out.println("Converta '" + binary + "' para decimal.");
-        
-        int attempts = 3;
-        boolean success = false;
-        int choice;
-        do {
-            choice = input.nextInt();
-            
-            
-        } while (attempts > 0 || success);
-        return true;
+        return this.convertEvent(input, "binary", 10, "Conversão correta! Você ativou a arma secreta dos anões e virou o rumo da batalha!", "Você falhou em decifrar o código binário. A batalha está perdida.");
+    }
+    
+    public boolean elfWay(Scanner input) {
+		System.out.println("\nVocê escolheu o caminho dos Elfos.");
+		System.out.println("Sua mente é ágil como uma flecha, pronta para desvendar os mistérios do sistema octal.");
+		System.out.println("As montanhas ecoam com o som de tambores anões. Os portões de Erebor se abriram, revelando guerreiros determinados a proteger seu ouro a qualquer custo. Thranduil, o rei dos elfos da Floresta das Trevas, lidera seu exército com elegância e precisão. Em meio à batalha, ele avista um antigo artefato élfico escondido entre as raízes de uma árvore sagrada — uma lança encantada que só pode ser ativada por quem domina as runas octais. Para liberar seu poder e atingir os anões, Thranduil precisa decifrar um código octal gravado em sua base. Com os inimigos se aproximando, ele tem apenas 3 tentativas para converter corretamente o número e lançar o ataque. (Dica: o número é entre 1 e 10)");
+		
+		return this.convertEvent(input, "octal", 10, "Conversão correta! Você ativou a lança encantada dos elfos e virou o rumo da batalha!", "Você falhou em decifrar o código octal. A batalha está perdida.");
+    }
+    
+    public boolean firstAct(Scanner input) {
+    	System.out.println("O céu escurece repentinamente. Um som gutural rompe o silêncio da batalha — os orcs de Gundabad surgem das cavernas, armados e sedentos por destruição. Thranduil, o rei élfico, observa a movimentação inimiga com olhos atentos. Sabendo que o equilíbrio da guerra depende de uma ação rápida, ele ergue sua lâmina reluzente e brada ordens aos seus soldados. Para liberar a formação de ataque mágico, é necessário decifrar o código octal gravado nas pedras do antigo altar élfico. Você tem 3 tentativas para converter corretamente o número e liberar o poder das flechas encantadas contra os orcs invasores.");
+    	boolean elfResult = this.convertEvent(input, "octal", 50, "Conversão correta! Você perparou o poder da artilharia contra os orcs de Gundabad!", "Você falhou em decifrar o código octal. Os orcs avançam impiedosamente.");
+    	if (!elfResult) return false;
+    	
+    	System.out.println("Enquanto Thranduil ordena o ataque mágico contra os orcs, do alto das muralhas de Erebor, os anões também percebem a aproximação da horda inimiga. O chão treme com o peso das criaturas, e o céu se cobre de fumaça e gritos. Thorin Escudo de Carvalho, cercado por seus guerreiros, sabe que não há mais tempo para rivalidades. A sobrevivência de seu povo depende da ativação das torres de fogo, criadas pelos antigos mestres da engenharia anã. Para isso, é necessário decifrar o código binário gravado nas placas de comando. Você tem 3 tentativas para converter corretamente o número e liberar uma chuva de chamas sobre os orcs que se aproximam.");
+    	boolean dwarfResult = this.convertEvent(input, "binary", 50, "Conversão correta! Você ativou as torres de fogo contra os orcs de Gundabad!", "Você falhou em decifrar o código binário. Os orcs avançam impiedosamente.");
+    	if (!dwarfResult) return false;
+		return true;
     }
 }
