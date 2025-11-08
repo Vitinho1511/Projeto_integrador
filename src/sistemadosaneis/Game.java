@@ -202,6 +202,14 @@ public class Game extends Util {
     	boolean ringResult = this.convertEvent(input, "hexadecimal", 50, "Conversão correta! Você ativou o Anel de Poder e virou o rumo da batalha contra os orcs de Gundabad!", "Você falhou em decifrar o código hexadecimal. A batalha está perdida.");
     	if (!ringResult) return false;
     	
+    	System.out.println("Voltando para a artilharia élfica... As balistas encantadas aguardam a ordem final para disparar contra os orcs que avançam pelo flanco leste. Thranduil observa o campo com precisão e sabe que o momento é agora. Para autorizar o ataque, o comandante deve decifrar corretamente o código de comando em sistema octal. Você tem 3 tentativas para realizar a conversão e liberar o disparo mágico que pode virar o rumo da batalha.");
+    	boolean elfArtilleryResult = this.convertEvent(input, "octal", 100, "Conversão correta! Você liberou a artilharia élfica contra os orcs de Gundabad!", "Você falhou em decifrar o código octal. A batalha está perdida.");
+    	if (!elfArtilleryResult) return false;
+    	
+    	System.out.println("Agora, voltando para os anões... As catapultas de Erebor estão carregadas com pedras flamejantes, prontas para serem lançadas contra a horda de orcs que ameaça romper as linhas de defesa. Thorin sabe que o momento decisivo chegou. Para liberar o ataque, o mestre das catapultas deve decifrar corretamente o código binário gravado nas tábuas de controle. Você tem 3 tentativas para realizar a conversão e lançar o ataque que pode salvar o dia.");
+    	boolean dwarfCatapultResult = this.convertEvent(input, "binary", 100, "Conversão correta! Você liberou as catapultas anãs contra os orcs de Gundabad!", "Você falhou em decifrar o código binário. A batalha está perdida.");
+    	if (!dwarfCatapultResult) return false;
+    	
     	
 		return true;
     }
