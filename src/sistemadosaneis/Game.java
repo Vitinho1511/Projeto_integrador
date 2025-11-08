@@ -33,7 +33,7 @@ public class Game {
                 case 2:
                     System.out.println("Jogar...");
                     
-                    boolean tutorial = showTutorial();
+                    boolean tutorial = showTutorial(input);
                     if (!tutorial) {
                         System.out.println("GAME OVER");
                         option = 4;
@@ -120,9 +120,7 @@ public class Game {
     	System.out.println("João Vitor");
     }
     
-    public boolean showTutorial() {
-        Scanner inputTutorial = new Scanner(System.in);
-
+    public boolean showTutorial(Scanner input) {
         System.out.println("Ano 2941 da Terceira Era...");
         System.out.println("A tensão entre os povos da Terra Média está no auge.");
         System.out.println("Anões e Elfos se enfrentam em uma batalha épica nos portões da Montanha Solitária.");
@@ -136,7 +134,7 @@ public class Game {
         String typeNum = "";
         int choice;
         do {
-            choice = inputTutorial.nextInt();
+            choice = input.nextInt();
             
             switch(choice) {
                 case 1: 
@@ -151,8 +149,6 @@ public class Game {
                     System.out.println("Opção inválida");
             }
         } while(choice != 1 && choice != 2);
-        
-        inputTutorial.close();
         return true;
     }
     
