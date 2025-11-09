@@ -237,7 +237,7 @@ public class Game extends Util {
     	if (!dwarfResult) return false;
     	
     	System.out.println("Enquanto os exércitos élficos e anões lutam bravamente contra a horda de orcs, uma energia ancestral começa a pulsar sob a terra. Ambos os reis — Thranduil e Thorin — percebem que a batalha está prestes a tomar proporções além da força de seus soldados. Em um antigo santuário escondido entre as ruínas, repousa um dos Anéis de Poder, forjado para proteger os povos livres da Terra Média. Mas seu poder está selado por um código mágico em sistema hexadecimal. Um guerreiro de confiança é escolhido para ativar o anel. Você tem 3 tentativas para converter corretamente o número e liberar sua energia contra os orcs, antes que a escuridão consuma o campo de batalha.");
-    	boolean ringResult = this.convertEvent(input, "hexadecimal", 50, "Conversão correta! Você ativou o Anel de Poder e virou o rumo da batalha contra os orcs de Gundabad!", "Você falhou em decifrar o código hexadecimal. A batalha está perdida.");
+    	boolean ringResult = this.convertEvent(input, "hex", 50, "Conversão correta! Você ativou o Anel de Poder e virou o rumo da batalha contra os orcs de Gundabad!", "Você falhou em decifrar o código hexadecimal. A batalha está perdida.");
     	if (!ringResult) return false;
     	
     	System.out.println("Voltando para a artilharia élfica... As balistas encantadas aguardam a ordem final para disparar contra os orcs que avançam pelo flanco leste. Thranduil observa o campo com precisão e sabe que o momento é agora. Para autorizar o ataque, o comandante deve decifrar corretamente o código de comando em sistema octal. Você tem 3 tentativas para realizar a conversão e liberar o disparo mágico que pode virar o rumo da batalha.");
@@ -261,10 +261,12 @@ public class Game extends Util {
     	boolean dwarfResult = this.convertEvent(input, "binary", 200, "Conversão correta! Você adquiriu novas armas para os anões!", "Você falhou em decifrar o código binário. Os anões estão desarmados.");
 		if (!dwarfResult) return false;
 		
+		System.out.println("Enquanto os anões reforçam suas armas, os elfos também se preparam para a batalha final. Suas flechas encantadas e arcos místicos precisam ser recarregados com energia antiga, o que exige conversões precisas do sistema octal para o decimal. Cada conversão correta fortalece o arsenal élfico, garantindo que estejam prontos para enfrentar qualquer ameaça que se aproxime.");
 		boolean elfResult = this.convertEvent(input, "octal", 200, "Conversão correta! Você adquiriu novas armas para os elfos!", "Você falhou em decifrar o código octal. Os elfos estão desarmados.");
 		if (!elfResult) return false;
 		
-		boolean mageResult = this.convertEvent(input, "hexadecimal", 200, "Conversão correta! Você adquiriu novas armas para os magos!", "Você falhou em decifrar o código hexadecimal. Os magos estão desarmados.");
+		System.out.println("No coração da preparação para a batalha final, os magos se dedicam a fortalecer seus poderes arcanos. Suas varinhas e cajados precisam ser imbuídos com energia mística, o que requer conversões precisas do sistema hexadecimal para o decimal. Cada conversão correta amplifica o poder dos magos, garantindo que estejam prontos para enfrentar as forças sombrias que ameaçam a Terra Média.");
+		boolean mageResult = this.convertEvent(input, "hex", 200, "Conversão correta! Você adquiriu novas armas para os magos!", "Você falhou em decifrar o código hexadecimal. Os magos estão desarmados.");
 		if (!mageResult) return false;
 		return true;
 	}
