@@ -62,6 +62,36 @@ public class Game extends Util {
 						option = 4;
 						break;
                     }
+                    System.out.println("\nParabéns! Você completou o segundo ato!");
+                    
+                    boolean finalAct = finalAct(input);
+                    if (!finalAct) {
+						System.out.println("GAME OVER");
+						option = 4;
+						break;
+                    }
+                    
+                    System.out.println("Após a intensa Batalha dos Cinco Exércitos, a poeira finalmente assentou sobre os campos de Erebor. Os inimigos foram derrotados, e os povos livres — humanos, anões, elfos e magos — celebram a paz conquistada com coragem e união. O reino está seguro, e a lenda do bravo guerreiro que ajudou a selar essa vitória será contada por gerações. Parabéns! Você concluiu sua jornada com honra e sabedoria. Fim de jogo.");
+                    System.out.println("=======================================");
+                    System.out.println("           FIM DE JOGO - CRÉDITOS      ");
+                    System.out.println("=======================================");
+                    System.out.println("Título: A Batalha dos Cinco Exércitos");
+                    System.out.println("Desenvolvido por:");
+                    System.out.println("- Antonio Augusto");
+                    System.out.println("- Gustavo Anibal");
+                    System.out.println("- Igor José");
+                    System.out.println("- João Vitor");
+                    System.out.println("Inspirado na obra: O Hobbit, de J.R.R. Tolkien");
+                    System.out.println("Universo: Terra Média");
+                    System.out.println("Tecnologia: Java");
+                    System.out.println("Agradecimentos especiais:");
+                    System.out.println("- Aos professores do SENAC");
+                    System.out.println("- Aos colegas de jornada");
+                    System.out.println("- À coragem dos povos livres da Terra Média");
+                    System.out.println("=======================================");
+                    System.out.println("Obrigado por jogar!");
+                    System.out.println("Que sua próxima aventura seja ainda mais épica!");
+                    System.out.println("=======================================");
                     
                     break;
                 case 3:
@@ -238,4 +268,22 @@ public class Game extends Util {
 		if (!mageResult) return false;
 		return true;
 	}
+    
+    public boolean finalAct(Scanner input) {
+    	System.out.println("Na alvorada da Batalha dos Cinco Exércitos, humanos, anões, elfos e magos unem forças, convertendo seus recursos para a linguagem comum dos homens — o decimal —, prontos para enfrentar o mal que ameaça a Montanha Solitária.");
+    	
+    	System.out.println("O rei anão encara seu maior inimigo no campo de batalha. Com apenas três tentativas para desferir o golpe final, ele precisa decifrar o código sagrado de sua linhagem — uma sequência binária ancestral — e convertê-la corretamente para o sistema decimal dos homens. Somente assim poderá liberar o poder oculto de seu machado e selar o destino da criatura sombria que ameaça Erebor.");
+    	boolean dwarfResult = this.convertEvent(input, "binary", 1000, "Conversão correta! Você desferiu o golpe final contra a criatura sombria!", "Você falhou em decifrar o código binário. A criatura sombria permanece invicta.");
+		if (!dwarfResult) return false;
+		
+		System.out.println("Enquanto isso, o líder élfico enfrenta um desafio semelhante. Com apenas três tentativas para lançar a flecha decisiva, ele deve decifrar o código ancestral de sua raça — uma sequência octal sagrada — e convertê-la corretamente para o sistema decimal dos homens. Somente assim poderá liberar o poder oculto de sua flecha encantada e selar o destino da criatura sombria que ameaça Erebor.");
+		boolean elfResult = this.convertEvent(input, "octal", 1000, "Conversão correta! Você lançou a flecha decisiva contra a criatura sombria!", "Você falhou em decifrar o código octal. A criatura sombria permanece invicta.");
+		if (!elfResult) return false;
+		
+		System.out.println("No auge da batalha, um mago poderoso se destaca entre os combatentes. Com apenas três tentativas para conjurar o feitiço final, ele deve decifrar o código arcano de sua ordem — uma sequência hexadecimal mística — e convertê-la corretamente para o sistema decimal dos homens. Somente assim poderá liberar o poder oculto de seu feitiço e selar o destino da criatura sombria que ameaça Erebor.");
+		boolean mageResult = this.convertEvent(input, "hexadecimal", 1000, "Conversão correta! Você conjurou o feitiço final contra a criatura sombria!", "Você falhou em decifrar o código hexadecimal. A criatura sombria permanece invicta.");
+		if (!mageResult) return false;
+
+		return true;
+    }
 }
