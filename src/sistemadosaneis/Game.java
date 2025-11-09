@@ -53,7 +53,45 @@ public class Game extends Util {
 						System.out.println("GAME OVER");
 						option = 4;
 						break;
-					} 
+					}
+                    System.out.println("\nParabéns! Você completou o primeiro ato!");
+                    
+                    boolean secondAct = secondAct(input);
+                    if (!secondAct) {
+						System.out.println("GAME OVER");
+						option = 4;
+						break;
+                    }
+                    System.out.println("\nParabéns! Você completou o segundo ato!");
+                    
+                    boolean finalAct = finalAct(input);
+                    if (!finalAct) {
+						System.out.println("GAME OVER");
+						option = 4;
+						break;
+                    }
+                    
+                    System.out.println("Após a intensa Batalha dos Cinco Exércitos, a poeira finalmente assentou sobre os campos de Erebor. Os inimigos foram derrotados, e os povos livres — humanos, anões, elfos e magos — celebram a paz conquistada com coragem e união. O reino está seguro, e a lenda do bravo guerreiro que ajudou a selar essa vitória será contada por gerações. Parabéns! Você concluiu sua jornada com honra e sabedoria. Fim de jogo.");
+                    System.out.println("=======================================");
+                    System.out.println("           FIM DE JOGO - CRÉDITOS      ");
+                    System.out.println("=======================================");
+                    System.out.println("Título: A Batalha dos Cinco Exércitos");
+                    System.out.println("Desenvolvido por:");
+                    System.out.println("- Antonio Augusto");
+                    System.out.println("- Gustavo Anibal");
+                    System.out.println("- Igor José");
+                    System.out.println("- João Vitor");
+                    System.out.println("Inspirado na obra: O Hobbit, de J.R.R. Tolkien");
+                    System.out.println("Universo: Terra Média");
+                    System.out.println("Tecnologia: Java");
+                    System.out.println("Agradecimentos especiais:");
+                    System.out.println("- Aos professores do SENAC");
+                    System.out.println("- Aos colegas de jornada");
+                    System.out.println("- À coragem dos povos livres da Terra Média");
+                    System.out.println("=======================================");
+                    System.out.println("Obrigado por jogar!");
+                    System.out.println("Que sua próxima aventura seja ainda mais épica!");
+                    System.out.println("=======================================");
                     
                     break;
                 case 3:
@@ -210,7 +248,42 @@ public class Game extends Util {
     	boolean dwarfCatapultResult = this.convertEvent(input, "binary", 100, "Conversão correta! Você liberou as catapultas anãs contra os orcs de Gundabad!", "Você falhou em decifrar o código binário. A batalha está perdida.");
     	if (!dwarfCatapultResult) return false;
     	
+    	System.out.println("Em meio ao caos da batalha, um guerreiro humano corre pelas muralhas de Erebor. Cercado por orcs e sem tempo para buscar reforços, ele encontra uma arma anã deixada para emergências — um lançador de fogo rúnico, forjado pelos mestres da engenharia de Khazad-dûm. Mas a arma não responde a comandos comuns. Para ativá-la, o humano precisa inserir o código de ativação no formato binário, como os anões o projetaram. Você tem 3 tentativas para converter corretamente o número decimal fornecido e liberar o poder da arma contra os invasores.");
+    	boolean humanResult = this.convertEvent(input, "binary", 150, "Conversão correta! Você ativou o lançador de fogo rúnico contra os orcs de Gundabad!", "Você falhou em decifrar o código binário. A batalha está perdida.");
+		if (!humanResult) return false;
+		return true;
+    }
+    
+    public boolean secondAct(Scanner input) {
+    	System.out.println("Os gritos dos orcs começam a se dissipar. As forças combinadas de elfos, anões e humanos conseguiram repelir a primeira onda de ataque. Corpos e armas estão espalhados pelo campo, e a fumaça da batalha ainda paira no ar. Embora a vitória tenha sido parcial, todos sabem que isso foi apenas o começo. Os generais inimigos recuaram, mas não foram derrotados. A Terra Média respira por um instante, mas a guerra ainda não acabou.");
+    	System.out.println("Relatos sombrios chegam de todas as fronteiras: uma última horda orc se reúne, liderada por um senhor da guerra que sobreviveu às batalhas anteriores. A batalha final se aproxima, como nas lendas do fim da Terceira Era. Para se preparar, os exércitos devem reforçar seus arsenais. Os anões precisam adquirir novas armas realizando conversões de binário para decimal. Os elfos, com seus sistemas antigos, usam octal. E os magos, guardiões dos segredos profundos, operam em hexadecimal. Você deve realizar as conversões corretamente para garantir que cada raça esteja equipada para o confronto decisivo.");
     	
+    	boolean dwarfResult = this.convertEvent(input, "binary", 200, "Conversão correta! Você adquiriu novas armas para os anões!", "Você falhou em decifrar o código binário. Os anões estão desarmados.");
+		if (!dwarfResult) return false;
+		
+		boolean elfResult = this.convertEvent(input, "octal", 200, "Conversão correta! Você adquiriu novas armas para os elfos!", "Você falhou em decifrar o código octal. Os elfos estão desarmados.");
+		if (!elfResult) return false;
+		
+		boolean mageResult = this.convertEvent(input, "hexadecimal", 200, "Conversão correta! Você adquiriu novas armas para os magos!", "Você falhou em decifrar o código hexadecimal. Os magos estão desarmados.");
+		if (!mageResult) return false;
+		return true;
+	}
+    
+    public boolean finalAct(Scanner input) {
+    	System.out.println("Na alvorada da Batalha dos Cinco Exércitos, humanos, anões, elfos e magos unem forças, convertendo seus recursos para a linguagem comum dos homens — o decimal —, prontos para enfrentar o mal que ameaça a Montanha Solitária.");
+    	
+    	System.out.println("O rei anão encara seu maior inimigo no campo de batalha. Com apenas três tentativas para desferir o golpe final, ele precisa decifrar o código sagrado de sua linhagem — uma sequência binária ancestral — e convertê-la corretamente para o sistema decimal dos homens. Somente assim poderá liberar o poder oculto de seu machado e selar o destino da criatura sombria que ameaça Erebor.");
+    	boolean dwarfResult = this.convertEvent(input, "binary", 1000, "Conversão correta! Você desferiu o golpe final contra a criatura sombria!", "Você falhou em decifrar o código binário. A criatura sombria permanece invicta.");
+		if (!dwarfResult) return false;
+		
+		System.out.println("Enquanto isso, o líder élfico enfrenta um desafio semelhante. Com apenas três tentativas para lançar a flecha decisiva, ele deve decifrar o código ancestral de sua raça — uma sequência octal sagrada — e convertê-la corretamente para o sistema decimal dos homens. Somente assim poderá liberar o poder oculto de sua flecha encantada e selar o destino da criatura sombria que ameaça Erebor.");
+		boolean elfResult = this.convertEvent(input, "octal", 1000, "Conversão correta! Você lançou a flecha decisiva contra a criatura sombria!", "Você falhou em decifrar o código octal. A criatura sombria permanece invicta.");
+		if (!elfResult) return false;
+		
+		System.out.println("No auge da batalha, um mago poderoso se destaca entre os combatentes. Com apenas três tentativas para conjurar o feitiço final, ele deve decifrar o código arcano de sua ordem — uma sequência hexadecimal mística — e convertê-la corretamente para o sistema decimal dos homens. Somente assim poderá liberar o poder oculto de seu feitiço e selar o destino da criatura sombria que ameaça Erebor.");
+		boolean mageResult = this.convertEvent(input, "hexadecimal", 1000, "Conversão correta! Você conjurou o feitiço final contra a criatura sombria!", "Você falhou em decifrar o código hexadecimal. A criatura sombria permanece invicta.");
+		if (!mageResult) return false;
+
 		return true;
     }
 }
