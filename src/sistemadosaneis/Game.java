@@ -43,32 +43,28 @@ public class Game extends Util {
 
                     boolean tutorial = showTutorial(input);
                     if (!tutorial) {
-                        System.out.println("GAME OVER");
-                        option = 4;
+                        System.out.println("GAME OVER\n");
                         break;
                     }
-                    System.out.println("\nParabéns! Você passou do tutorial!.");
+                    System.out.println("\nParabéns! Você passou do tutorial!");
 
                     boolean firstAct = firstAct(input);
                     if (!firstAct) {
-                        System.out.println("GAME OVER");
-                        option = 4;
+                        System.out.println("GAME OVER\n");
                         break;
                     }
                     System.out.println("\nParabéns! Você completou o primeiro ato!");
 
                     boolean secondAct = secondAct(input);
                     if (!secondAct) {
-                        System.out.println("GAME OVER");
-                        option = 4;
+                        System.out.println("GAME OVER\n");
                         break;
                     }
                     System.out.println("\nParabéns! Você completou o segundo ato!");
 
                     boolean finalAct = finalAct(input);
                     if (!finalAct) {
-                        System.out.println("GAME OVER");
-                        option = 4;
+                        System.out.println("GAME OVER\n");
                         break;
                     }
 
