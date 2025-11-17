@@ -25,7 +25,7 @@ public class Util {
     public boolean convertEvent(Scanner input, String type, int maxNumber, String successMessage, String failureMessage) {
         int randomInt = this.randomInt(maxNumber);
         String numToConvert = this.convertNumber(randomInt, type);
-        System.out.printf("Converta o número '%s' decimal.\n", numToConvert);
+        System.out.printf("Converta o número '%s' para decimal.\n", numToConvert);
 
         int attempts = 3;
         boolean success = false;
